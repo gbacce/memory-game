@@ -1,0 +1,49 @@
+
+img {
+	max-width: 100%;  /* Don't let the images escape their parent element! */
+}
+
+.card {
+	/* Card is the grandparent element. It needs perspective so that it's child elements can exist in the 3D space. */
+
+	height: 300px;
+	min-width: 300px;
+	border: 2px solid black;
+	perspective: 500px;
+}
+
+
+.card-holder {
+	width: 300px;
+	position: relative;  /* The child elements will have absolute position. Set the parent element to relative in order to anchor them */
+	transform-style: preserve-3d; /* The child elements will exist in the 3D space */
+	transition: 1s all;
+	cursor: pointer;
+}
+
+/*.card-holder:hover {
+	border: 1px solid lightgreen;
+}
+*/
+
+.card-front, .card-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+
+}
+
+.card-front {
+	transform: rotateY(180deg);
+}
+
+.card-back{
+	background: url('../images/logo-bw.png') no-repeat 50%;  /* Background images do not stretch content. They repeat the content to fill the space. The 50% places the background image in the center of the div. (Alternatively, you could write it as 50% 50% to specify 50% x and 50% y.) */
+	height: 300px;
+	min-width: 300px;
+}
+
+.flip, .matched {
+	transform: rotateY(-180deg);
+}
